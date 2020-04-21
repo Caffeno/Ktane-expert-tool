@@ -1,0 +1,37 @@
+key:
+    - "Red"
+    - "Blue"
+    - "Green"
+    - "Yellow"
+vowel:
+    No Strikes:
+        - "Blue"
+        - "Red"
+        - "Yellow"
+        - "Green"
+    1Strike: 
+        - "Yellow"
+        - "Green"
+        - "Blue"
+        - "Red"
+    2Strike:
+        - "Green"
+        - "Red"
+        - "Yellow"
+        - "Blue"
+no vowel:
+    No Strikes:
+        - "Blue"
+        - "Yellow"
+        - "Green"
+        - "Red"
+    1Strike:
+        - "Red"
+        - "Blue"
+        - "Yellow"
+        - "Green"
+    2Strikes:
+        - "Yellow"
+        - "Green"
+        - "Blue"
+        - "Red"

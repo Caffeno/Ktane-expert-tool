@@ -1,0 +1,30 @@
+Red:
+    - C
+    - B
+    - A
+    - A or C
+    - B
+    - A or C
+    - A, B or C
+    - A or B
+    - B
+Blue:
+    - B
+    - A or C
+    - B
+    - A
+    - B
+    - B or C
+    - C
+    - A or C
+    - A
+Back:
+    - A, B or C
+    - A or C
+    - B
+    - A or C
+    - B
+    - B or C
+    - A or B
+    - C
+    - C

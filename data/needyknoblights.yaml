@@ -1,0 +1,15 @@
+lightpositions:
+    __x,xxx:
+        "up"
+    x_x,_xx:
+        "up"
+    _xx,xxx:
+        "down"
+    x_x,_x_:
+        "down"
+    ___,___:
+        "left"
+    ___,x__:
+        "left"
+    x_x,xxx:
+        "right"
