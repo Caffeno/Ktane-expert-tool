@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>
+Ktane Expert Tool
+</title>
+<body>
+<span>
+  <a href="/index">Home</a>
+  <a href="/wires">Wires</a>
+  <a href="/wiresequence">Wire Sequence</a>
+  <a href="/complexwires">Complex Wires</a>
+  <a href="/button">The Button</a>
+  <a href="/keypad">Keypad</a>
+  <a href="/needyknob">Needy Knob</a>
+  <a href="/mazes">Mazes</a>
+  <a href="/morse">Morse</a>
+  <a href="/simon">Simon</a>
+  <a href="/WOF">Who's On First</a>
+  <a href="/memory">Memory</a>
+  <a href="/password">Password</a>
+</span>
+<hr>
+{% with messages=get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <h2> {{ message }}</h2>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+</body
+</html>
+
+
+
+  

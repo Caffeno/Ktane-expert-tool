@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Edgework Pre Initialize</h1>
+<form action="/edgework" method="post" novalidate>
+  {{ form.hidden_tag() }}
+  <p>
+    {{ form.plates.label }}<br>
+    {{ form.plates }}<br>
+    {% for error in form.plates.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p>
+    {{ form.indicators.label }}<br>
+    {{ form.indicators }}<br>
+    {% for error in form.indicators.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+    {% endfor %} 
+  </p>
+  <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

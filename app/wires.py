@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-from edgework import Edgework
-
 class Wires:
     position_words = ['Last', 'First' , 'Second', 'Third', 'Fourth', 'Fifth', 'sixth']
     result = 'Cut the {} wire'
@@ -11,10 +9,9 @@ class Wires:
         if int(edgework.serial[5]) % 2 == 1:
             self.oddserial = True
 
-    def run(self):
-        wiresequence = self.getwires()
+    def run(self, wiresequence):
         answer  = self.solve(wiresequence)
-        print(answer)
+        return answer
 
     def getwires(self):
         posiotion = 1

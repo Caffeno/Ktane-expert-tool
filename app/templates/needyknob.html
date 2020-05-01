@@ -1,0 +1,16 @@
+{% extends 'modulebase.html' %}
+
+{% block content %}
+<form action='' method='post'>
+  <h4>Left 6 lights</h4>
+  <div>
+    {{ form.light11 }}
+    {{ form.light12 }}
+    {{ form.light13 }}<br>
+    {{ form.light21 }}
+    {{ form.light22 }}
+    {{ form.light23 }}<br>
+  </div>
+  <p> {{ form.submit }} </p>
+</form>
+{% endblock %}

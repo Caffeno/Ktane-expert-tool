@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="/index" method='post' novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.serial.label }}<br>
+      {{ form.serial(size=10) }}<br>
+      {% for error in form.serial.errors %}
+      <span style="color: red;">[{{error}}]</span>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.batteries.label }}<br>
+      {{ form.batteries(size=7) }}<br>
+      {% for error in form.batteries.errors %}
+      <span style="color: red;">[{{error}}]</span>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.holders.label }}<br>
+      {{ form.holders(size=7) }}<br>
+      {% for error in form.holders.errors %}
+      <span style="color: red;">[{{error}}]</span>
+      {% endfor %}
+    </p>
+    {% if form.Pcount.data|int  >= 1 %}
+    <tr><td>Port Plate 1<br>
+        {{ form.PS21.label }}
+        {{ form.PS21 }}<br>
+        {{ form.RCA1.label }}
+        {{ form.RCA1 }}<br>
+        {{ form.DVI1.label }}
+        {{ form.DVI1 }}<br>
+        {{ form.RJ1.label }}
+        {{ form.RJ1 }}<br>
+        {{ form.parallel1.label }}
+        {{ form.parallel1 }}<br>
+        {{ form.serial1.label }}
+        {{ form.serial1 }}<br>
+   </td>
+
+    {% if form.Pcount.data|int  >= 2 %}
+        <td><br>Port Plate 2<br>
+        {{ form.PS22.label }}
+        {{ form.PS22 }}<br>
+        {{ form.RCA2.label }}
+        {{ form.RCA2 }}<br>
+        {{ form.DVI2.label }}
+        {{ form.DVI2 }}<br>
+        {{ form.RJ2.label }}
+        {{ form.RJ2 }}<br>
+        {{ form.parallel2.label }}
+        {{ form.parallel2 }}<br>
+        {{ form.serial2.label }}
+        {{ form.serial2 }}<br>
+        </td>
+    {% if form.Pcount.data|int  >= 3 %}
+        <td><br>Port Plate 3 <br>
+        {{ form.PS23.label }}
+        {{ form.PS23 }}<br>
+        {{ form.RCA3.label }}
+        {{ form.RCA3 }}<br>
+        {{ form.DVI3.label }}
+        {{ form.DVI3 }}<br>
+        {{ form.RJ3.label }}
+        {{ form.RJ3 }}<br>
+        {{ form.parallel3.label }}
+        {{ form.parallel3 }}<br>
+        {{ form.serial3.label }}
+        {{ form.serial3 }}<br>
+        </td>
+    {% if form.Pcount.data|int  >= 4 %}
+        <td><br>Port Plate 4<br>
+        {{ form.PS24.label }}
+        {{ form.PS24 }}<br>
+        {{ form.RCA4.label }}
+        {{ form.RCA4 }}<br>
+        {{ form.DVI4.label }}
+        {{ form.DVI4 }}<br>
+        {{ form.RJ4.label }}
+        {{ form.RJ4 }}<br>
+        {{ form.parallel4.label }}
+        {{ form.parallel4 }}<br>
+        {{ form.serial4.label }}
+        {{ form.serial4 }}<br>
+        </td>
+    {% if form.Pcount.data|int  >= 5 %}
+        <td><br>Port Plate 5<br>
+        {{ form.PS25.label }}
+        {{ form.PS25 }}<br>
+        {{ form.RCA5.label }}
+        {{ form.RCA5 }}<br>
+        {{ form.DVI5.label }}
+        {{ form.DVI5 }}<br>
+        {{ form.RJ5.label }}
+        {{ form.RJ5 }}<br>
+        {{ form.parallel5.label }}
+        {{ form.parallel5 }}<br>
+        {{ form.serial5.label }}
+        {{ form.serial5 }}<br>
+        </td>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+        </tr>
+    {% endif %} 
+    {% if form.Icount.data|int  >= 1 %}
+        <tr><td><br> Indicator 1 <br>
+        {{ form.light1.label }}
+        {{ form.light1 }}
+        {{ form.label1 }}
+        {{ form.label1.label }}</td>
+    {% if form.Icount.data|int  >= 2 %}
+        <td><br> Indicator 2 <br>
+        {{ form.light2.label }}
+        {{ form.light2 }}
+        {{ form.label2 }}
+        {{ form.label2.label }}</td>
+    {% if form.Icount.data|int  >= 3 %}
+        <td><br> Indicator 3 <br>
+        {{ form.light3.label }}
+        {{ form.light3 }}
+        {{ form.label3 }}
+        {{ form.label3.label }}</td>
+    {% if form.Icount.data|int  >= 4 %}
+        <td><br> Indicator 4 <br>
+        {{ form.light4.label }}
+        {{ form.light4 }}
+        {{ form.label4 }}
+        {{ form.label4.label }}</td>
+    {% if form.Icount.data|int  >= 5 %}
+        <td><br> Indicator 5 <br>
+        {{ form.light5.label }}
+        {{ form.light5 }}
+        {{ form.label5 }}
+        {{ form.label5.label }}</td>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+         </tr>
+    {% endif %}
+    {{ form.Pcount }}
+    {{ form.Icount }}
+    <br><br>{{ form.submit }}
+    </form>
+{% endblock %}

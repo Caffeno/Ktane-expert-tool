@@ -1,0 +1,14 @@
+{% extends 'modulebase.html' %}
+
+{% block content %}
+
+<form action='' method='post'>
+  <div style="column-count:4";>
+  {{ form.symbol1.label }} {{ form.symbol1 }}<br>
+  {{ form.symbol2.label }} {{ form.symbol2 }}<br>
+  {{ form.symbol3.label }} {{ form.symbol3 }}<br>
+  {{ form.symbol4.label }} {{ form.symbol4 }}<br>
+  </div>
+  <p>{{ form.submit }}</p>
+</form>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1> {{ test }} </h1>
+  <h1> Edgework </h1>
+  <form action="" method="post" novalidate>
+    <script>
+    function displayIndicators() {
+      var indicatorcount = document.getElementById("indicatorcount").value;
+      document.getElementById('indPrompt').display=none;
+      var ports = ['PS/2', 'DVI-D', 'RJ-45', 'Serial', 'Parallel', 'Sterio RCA']
+      var text = "<tr>
+      var i, j;
+      for (i=0, i<indicatorcount, i++) {
+        text += '<td> Plate ' + (i+1) + '<br>';
+        for (j=0, j<6, j++) {
+          text += '<input type="checkbox" name="plate'+j+ports[j]+'" value="plate'+j+ports[j]+'">';
+          text += '<label for="plate'+j+ports[j] + '">' + ports[j] + '</label><br>';
+          }
+      }
+      text += '</tr>'
+      document.getElementById('indicatorlists').innerHTML = text}
+    </script>
+
+    <p id='indPrompt'>
+      How many indicators?
+      <input type="text" id="indicatorcount" name='indicatorcount'>
+      <button onclick="displayIndicators()" name='button' value='whatever'>
+        confirm
+      </button>
+    </p>
+    <p id='indicatorlists'>
+    </p>
+  </form>
+  <button onclick=displayIndicators()>
+        confirm
+      </button>
+{% endblock %}

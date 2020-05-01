@@ -6,21 +6,18 @@ class Keypad:
     columns = []
     
     def __init__(self):
-        f = open('data/keypadsymbols.yaml', 'r')
+        f = open('app/data/keypadsymbols.yaml', 'r')
         yamlcolumns = yaml.load(f, Loader = yaml.FullLoader)['keypadcolumns']
         for column in yamlcolumns:
             self.columns.append(yamlcolumns[column])
 
-    def run(self):
-       symbols = []  
-       for x in range(4):
-           symbol = input('Symbol {} \n'.format(x + 1))
-           symbols.append(symbol)
+    def run(self, symbols):
        column = self.findcolumn(symbols)
-       orderedsymbols = self.findorder(symbols, column)
-       print('The solution is:')
-       for symbol in orderedsymbols:
-           print(symbol[1])
+       if column == 'FAIL':
+           return column
+       else:
+           orderedsymbols = self.findorder(symbols, column)
+           return orderedsymbols
 
     def findcolumn(self, symbols):
         for column in self.columns:
@@ -29,6 +26,11 @@ class Keypad:
                 count += column.count(symbol)
             if count == 4:
                 break
+        print(column)
+        print(symbols)
+        print(count)
+        if count != 4:
+            column = 'FAIL'
         return column
 
     def findorder(self, symbols, column):

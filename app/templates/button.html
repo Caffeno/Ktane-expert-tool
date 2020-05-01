@@ -1,0 +1,20 @@
+{% extends 'modulebase.html' %}
+
+{% block content %}
+<form action='' method='post'>
+  <p>
+    {% if form.hold.data == 'True' %}
+       {{ form.light.label }}
+       {{ form.light }} <br>
+    {% else %}
+       {{ form.color.label }}
+       {{ form.color }}
+       <br> {{ form.label.label }}
+       {{ form.label }}
+       <br>
+    {% endif %}
+    {{ form.hold }}
+    {{ form.submit }}
+  </p>
+</form>
+{% endblock %}

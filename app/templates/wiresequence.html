@@ -1,0 +1,16 @@
+{% extends 'modulebase.html' %}
+
+{% block content %}
+<form action='' method='post'>
+<p>
+{{ form.color.label }}<br>
+{{ form.color }}<br>
+{{ form.letter.label }}<br> 
+{{ form.letter }}<br>
+{{ form.submit }}
+{{ form.hiddenred }}
+{{ form.hiddenblue }}
+{{ form.hiddenblack }}
+</p>
+</form>
+{% endblock %}
