@@ -36,7 +36,7 @@ class WOF:
     positionwords = {}
     positionwords['T'] = 'top'
     positionwords['M'] = 'middle'
-    positionwords['B'] = 'botton'
+    positionwords['B'] = 'bottom'
     positionwords['R'] = 'right'
     positionwords['L'] = 'left'
 

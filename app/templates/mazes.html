@@ -1,0 +1,33 @@
+{% extends "modulebase.html" %}
+
+{% block content %}
+<form action='' method='post'>
+  <div style='column-count:3;'>
+    Circle(s) (only one is used)<br>
+    {{ form.circle11 }} {{ form.circle12 }} {{ form.circle13 }} {{ form.circle14 }} {{ form.circle15 }} {{ form.circle16 }}<br> 
+    {{ form.circle21 }} {{ form.circle22 }} {{ form.circle23 }} {{ form.circle24 }} {{ form.circle25 }} {{ form.circle26 }}<br> 
+    {{ form.circle31 }} {{ form.circle32 }} {{ form.circle33 }} {{ form.circle34 }} {{ form.circle35 }} {{ form.circle36 }}<br> 
+    {{ form.circle41 }} {{ form.circle42 }} {{ form.circle43 }} {{ form.circle44 }} {{ form.circle45 }} {{ form.circle46 }}<br> 
+    {{ form.circle51 }} {{ form.circle52 }} {{ form.circle53 }} {{ form.circle54 }} {{ form.circle55 }} {{ form.circle56 }}<br> 
+    {{ form.circle61 }} {{ form.circle62 }} {{ form.circle63 }} {{ form.circle64 }} {{ form.circle65 }} {{ form.circle66 }}<br> 
+
+    Starting point <br>
+    {{ form.start11 }} {{ form.start12 }} {{ form.start13 }} {{ form.start14 }} {{ form.start15 }} {{ form.start16 }}<br> 
+    {{ form.start21 }} {{ form.start22 }} {{ form.start23 }} {{ form.start24 }} {{ form.start25 }} {{ form.start26 }}<br> 
+    {{ form.start31 }} {{ form.start32 }} {{ form.start33 }} {{ form.start34 }} {{ form.start35 }} {{ form.start36 }}<br> 
+    {{ form.start41 }} {{ form.start42 }} {{ form.start43 }} {{ form.start44 }} {{ form.start45 }} {{ form.start46 }}<br> 
+    {{ form.start51 }} {{ form.start52 }} {{ form.start53 }} {{ form.start54 }} {{ form.start55 }} {{ form.start56 }}<br> 
+    {{ form.start61 }} {{ form.start62 }} {{ form.start63 }} {{ form.start64 }} {{ form.start65 }} {{ form.start66 }}<br> 
+
+
+    Ending point <br>
+    {{ form.end11 }} {{ form.end12 }} {{ form.end13 }} {{ form.end14 }} {{ form.end15 }} {{ form.end16 }}<br> 
+    {{ form.end21 }} {{ form.end22 }} {{ form.end23 }} {{ form.end24 }} {{ form.end25 }} {{ form.end26 }}<br> 
+    {{ form.end31 }} {{ form.end32 }} {{ form.end33 }} {{ form.end34 }} {{ form.end35 }} {{ form.end36 }}<br> 
+    {{ form.end41 }} {{ form.end42 }} {{ form.end43 }} {{ form.end44 }} {{ form.end45 }} {{ form.end46 }}<br> 
+    {{ form.end51 }} {{ form.end52 }} {{ form.end53 }} {{ form.end54 }} {{ form.end55 }} {{ form.end56 }}<br> 
+    {{ form.end61 }} {{ form.end62 }} {{ form.end63 }} {{ form.end64 }} {{ form.end65 }} {{ form.end66 }}<br> 
+  </div>
+  <p> {{ form.submit }} </p>
+</form>
+{% endblock %}

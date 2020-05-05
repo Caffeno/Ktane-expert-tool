@@ -2,7 +2,7 @@
 
 from app import app, db
 from flask import flash, make_response, render_template, url_for, redirect, request
-from app.forms import simonform, memoryform, passwordform, morseform, needyknobform, keypadform, EdgeworkPrepForm, FullEdgeworkForm, wiresform, buttonform, WOFform, wiresequenceform
+from app.forms import simonform, memoryform, mazesform, passwordform, morseform, needyknobform, keypadform, EdgeworkPrepForm, FullEdgeworkForm, wiresform, buttonform, WOFform, wiresequenceform
 from app.edgework import Edgework
 from pprint import pprint
 from app.models import ewmodel
@@ -18,6 +18,11 @@ from app.simon import Simon
 from app.password import Password
 from app.WOF import WOF
 from app.memory import Memory
+from app.mazes import Mazes
+from pathfinding.core.grid import Grid
+from pathfinding.finder.a_star import AStarFinder
+from pathfinding.core.diagonal_movement import DiagonalMovement
+
 
 @app.route('/edgeprep', methods=['GET', 'POST'])
 def edgeworkprep():
@@ -108,7 +113,7 @@ def wiresequencem():
         else:
             flash('select both a color and letter')
         if int(form.hiddenred.data) + int(form.hiddenblue.data) + int(form.hiddenblack.data) > 6:
-            flash('select a new module from above when finnished')
+            flash('select a new module from above when finished')
     else:    
         form = wiresequenceform()
     return render_template('wiresequence.html', form=form)
@@ -343,7 +348,29 @@ def memorym():
         flash('ROUND ' + form.stage.data)
     return render_template('memory.html', form=form)
 
-
+@app.route('/mazes', methods=['GET', 'POST'])
+def mazesm():
+    if request.method != 'POST':
+        form = mazesform()
+    else:
+        form = mazesform(request.form)
+        module = Mazes()
+        positions = module.parseform(form)
+        circle = positions[0] == 'Invalid/No Circle Specified'
+        start = positions[1] == 'No Start Specified'
+        end =  positions[2] == 'No End Specified'
+        if circle:
+            flash(positions[0])
+        if start:
+            flash(positions[1])
+        if end:
+            flash(positions[2])
+        if not start and not circle and not end:
+            response = module.run(positions[0], positions[1], positions[2])
+            for move in response:
+                flash(move)
+            return redirect(url_for('home'))
+    return render_template('mazes.html', form=form)
 
 
 
