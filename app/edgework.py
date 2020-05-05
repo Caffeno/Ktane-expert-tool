@@ -38,9 +38,10 @@ class Edgework:
             self.portplates.append(p)
         for ind in bomb.indicators:
             self.indicators.append([ind.light, ind.label])        
+        self.strikes = bomb.strikes
 
     def populatedb(self):
-        dbew = ewmodel(serial=self.serial, batteries=(self.batteries['AA']+self.batteries['D']), holders=(self.batteries['D']+self.batteries['AA']/2))
+        dbew = ewmodel(serial=self.serial, batteries=(self.batteries['AA']+self.batteries['D']), holders=(self.batteries['D']+self.batteries['AA']/2), strikes=self.strikes)
         db.session.add(dbew)
         db.session.commit()
         for plate in self.portplates:

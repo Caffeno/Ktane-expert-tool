@@ -121,3 +121,34 @@ class needyknobform(FlaskForm):
     light22 = BooleanField('l22')
     light23 = BooleanField('l23')
     submit = SubmitField('Check')
+
+class morseform(FlaskForm):
+    text = StringField('Input word using text OR morse using "." for dot and "-" for dash', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class simonform(FlaskForm):
+    flash = SelectField('Color Flashed', choices=['Red', 'Blue', 'Yellow', 'Green'], validate_choice=False)
+    sequence = HiddenField('Sequence', default="")
+    submit = SubmitField('Confirm')
+
+class passwordform(FlaskForm):
+    wheel = StringField('Letters in Wheel ', validators=[Length(min=6, max=6, message="Fill in all characters in the wheel")])
+    oldwheels = HiddenField('old', default='')
+    wheelnumber = HiddenField('count', default=1)
+    submit = SubmitField('submit')
+
+class WOFform(FlaskForm):
+    display = StringField("What's on the display")
+    position = StringField("What's in the given position")
+    step = HiddenField('step', default='0')
+    submit = SubmitField('Submit')
+
+class memoryform(FlaskForm):
+    stage = HiddenField('stage', default = '1')
+    display = IntegerField('Number Displayed')
+    missingtype = HiddenField('missing data', default='')
+    missingpos = IntegerField('What position did they press')
+    missingvalue = IntegerField('What was the label did they press')
+    previousrounds = HiddenField('previous rounds', default='')
+    holder = HiddenField('hold', default='')
+    submit = SubmitField('Submit')   

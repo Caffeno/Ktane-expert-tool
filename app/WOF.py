@@ -41,23 +41,21 @@ class WOF:
     positionwords['L'] = 'left'
 
     def __init__(self):
-        f = open('data/WOFwords.yaml', 'r')
+        f = open('app/data/WOFwords.yaml', 'r')
         self.wordlists = yaml.load(f, Loader=yaml.FullLoader)['wordlists']
 
-    def run(self):
-        while True:
-            shownword = input('whats on the display'.upper() + '\n').upper()
-            position = self.display[shownword]
-            listword = input('What is in the {} {} position'.format(self.positionwords[position[0]], self.positionwords[position[1]]) + '\n').upper()
-            self.printlist(listword)
+    def getposition(self, shownword):
+            if shownword in self.display.keys():
+                position = self.display[shownword]
+                return "{} {}".format(self.positionwords[position[0]], self.positionwords[position[1]])
+            else:
+                return 'INVALID DISPLAY WORD'
 
-    def printlist(self, word):
-        for entry in self.wordlists[word]:
-            print(entry)
-            x = input('Input anything if word was found')
-            if x != '':
-                break
-
+    def getlist(self, word):
+        if word in self.wordlists.keys():
+            return self.wordlists[word]
+        else:
+            return 'INVALID POSITION WORD'
 
 if __name__ == "__main__":
     test = WOF()

@@ -11,13 +11,12 @@ class Password:
         
         for letter in letters:
             self.wordsbyletter[letter] = []
-        f = open('data/passworddict.yaml', 'r')
+        f = open('app/data/passworddict.yaml', 'r')
         wordlist = yaml.load(f, Loader=yaml.FullLoader)['wordlist']
         for word in wordlist:
             self.wordsbyletter[word[0]].append(word)
         
-    def wheel(self, number, groups, possibleletters):
-        letters = input('letters in {} wheel'.format(self.positions[number]) + '\n')        
+    def wheel(self, number, groups, possibleletters, letters):
         possiblewords = []
         newletters = ''
         for letter in letters:
@@ -29,13 +28,13 @@ class Password:
         possiblewords.append(newletters)
         return possiblewords
             
-    def run(self):
+    def run(self, wheels):
         avalableletters = 'abcefghlnoprstw'
         row = 1
         wordsbyXletter = self.wordsbyletter
         possible = [None, None]
-        while len(possible) > 1:
-            possible = self.wheel(row, wordsbyXletter, avalableletters)
+        for positionletters in wheels:
+            possible = self.wheel(row, wordsbyXletter, avalableletters, positionletters)
             avalableletters = possible.pop()
             wordsbyXletter = {}
             for letter in avalableletters:
@@ -44,7 +43,12 @@ class Password:
                 for word in possible:
                     wordsbyXletter[word[row]].append(word)
             row += 1
-        print(possible[0])
+        if len(possible) == 1:
+            return possible[0]
+        elif len(possible) == 0:
+            return 'Invalid Wheel Set'
+        else:
+            return 'Need Another Wheel'
 
 if __name__ == "__main__":
     test = Password()

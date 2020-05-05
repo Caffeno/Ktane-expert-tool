@@ -7,6 +7,7 @@ class ewmodel(db.Model):
     holders = db.Column(db.Integer)
     plates = db.relationship('platemodel', lazy='dynamic')
     indicators = db.relationship('indicatormodel', lazy='dynamic')
+    strikes = db.Column(db.Integer)
 
     def __repr__(self):
         return '<EW for bomb: {}>'.format(self.serial)

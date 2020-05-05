@@ -1,0 +1,11 @@
+{% extends 'modulebase.html' %}
+
+{% block content %}
+<form action='' method='post'>
+  <p>
+    {{ form.text.label }}<br>
+    {{ form.text }}<br>
+    {{ form.submit }}
+  </p>
+<form>
+{% endblock %}

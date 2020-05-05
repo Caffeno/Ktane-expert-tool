@@ -2,14 +2,13 @@
 
 import yaml
 import re
-from edgework import Edgework
 
 class Simon:
     table = {}
     strikekeys = ['No Strikes', '1Strike', '2Strike']
 
     def __init__(self, edgework):
-        f = open('data/simontable.yaml', 'r')
+        f = open('app/data/simontable.yaml', 'r')
         rawtables = yaml.load(f, Loader = yaml.FullLoader)
         self.key = rawtables['key']
         self.table['vowel'] = rawtables['vowel']
@@ -19,29 +18,9 @@ class Simon:
             self.serialvowel = True
         self.strikes = edgework.strikes
 
-    def run(self):
+    def run(self, flashed):
         newcolors = self.gettable(self.strikes)
-        sequence = []
-        done = ''
-        while done != 'end':
-            response = self.findswap(newcolors)
-            done = response
-            if done != 'end':
-                sequence.append(response)
-                print('\ncolor sequence')
-                for color in sequence:
-                    print(color)
-
-    def findswap(self, newcolors):
-        while True:
-            flashed = input('\nColor flashed \n')
-            if flashed == 'Blue' or flashed == 'Yellow' or flashed == 'Green' or flashed == 'Red':
-                response = newcolors[self.key.index(flashed)]
-                return response
-            elif flashed == 'end':
-                return flashed
-            else:
-                print('input a valid color, Red Green Yellow Blue, capitalized or end')
+        return newcolors[self.key.index(flashed)]
 
     def gettable(self, strikes):
         if self.serialvowel:

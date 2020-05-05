@@ -1,0 +1,25 @@
+{% extends 'modulebase.html' %}
+
+{% block content %}
+<form action='' method='post'>
+  <p>
+    {{ form.stage }}
+    {{ form.missingtype }}
+    {{ form.previousrounds }}
+    {{ form.holder }}
+    {% if form.holder.data != "" %}
+      {% if form.missingtype.data == "Value" %}
+         {{ form.missingvalue.label }} {{ form.missingvalue }}
+      {% else %}
+         {{ form.missingpos.label }} {{ form.missingpos }}
+      {% endif %}
+    {% else %}
+      {{ form.display.label }} {{ form.display }}
+    {% endif %}
+    <br>
+    {{ form.submit }}
+  </p>
+</form>
+{% endblock %}
+    
+    

@@ -1,0 +1,15 @@
+{% extends 'modulebase.html' %}
+
+{% block content %}
+<form action='' method='post'>
+  <p>
+    {% if form.step.data == '0' %}
+      {{ form.display }} {{ form.display.label }}
+    {% else %}
+      {{ form.position }} {{ form.position.label }}
+    {% endif %}
+    {{ form.step }}
+    {{ form.submit }}
+  </p>
+</form>
+{% endblock %}

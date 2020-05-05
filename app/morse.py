@@ -4,20 +4,24 @@ import morse_talk as mtalk
 import yaml
 
 class Morse:
-
+    
+    #TODO: make it possible to find code using partial words
     def __init__(self):
-        f = open('data/morsetable.yaml', 'r')
+        f = open('app/data/morsetable.yaml', 'r')
         self.wordcodes = yaml.load(f, Loader = yaml.FullLoader)['wordcodes']
             
-    def run(self):
-        system = input('input type, morse or text\n')
-        if system == 'text':
-            word = input('put in the word\n')
-            print(self.wordcodes[word])
+    def run(self, text):
+        if text[0] == '.' or text[0] == '-':
+            morseword = mtalk.decode(text)
+            if morseword.lower() in self.wordcodes.keys():
+                return self.wordcodes[morseword.lower()]
+            else:
+                return 'INVALID MORSE WORD'
         else:
-            morse = input('input morse string using . and  - \n ')
-            word = mtalk.decode(morse)
-            print(self.wordcodes[word.lower()])
+            if text in self.wordcodes.keys():
+                return self.wordcodes[text]
+            else:
+                return 'INVALID WORD'
 
 
 if __name__ == "__main__":

@@ -5,94 +5,94 @@ class Memory:
     valuestring = 'press the button labled {}'
     positions = [None, 'first', 'second', 'third', 'fourth']
     
-    def __init__(self):
-        self.stored = [None]
-
     def press(self, value, string):
         if string == 'number':
-            print(self.valuestring.format(value) + '\n')
-            position = input('what position did you press: \n')
-            self.stored.append([value, int(position)])
+            return [self.valuestring.format(value), 'Position', value]
         elif string == 'position':
-            print(self.positionstring.format(self.positions[value]) + '\n')
-            number = input('what number did you press: \n')
-            self.stored.append([int(number), value])
+            return [self.positionstring.format(self.positions[value]), 'Value', value]
 
-    def round1(self):
+    def round1(self, display):
         print('ROUND 1')
-        display = input('number displayed: \n')
-        if display == '1':
+        if display == 1:
             value = 2
         else:
-            value = int(display)
+            value = display
         button = 'position'
-        self.press(value, 'position')
+        answer = self.press(value, 'position')
+        return answer
 
-    def round2(self):
+    def round2(self, display, stored):
         print('ROUND 2')
-        display = input('number displayed: \n')
-        if display == '1':
+        if display == 1:
             value = 4
             button = 'number'
-        elif display == '2' or display == '4':
-            value = self.stored[1][1]
+        elif display == 2 or display == 4:
+            value = int(stored[1][1])
             button = 'position'
-        elif display == '3':
+        elif display == 3:
             value = 1
             button = 'position'
-        self.press(value, button)
+        answer = self.press(value, button)
+        return answer
 
-    def round3(self):
+    def round3(self, display, stored):
         print('ROUND 3')
-        display = input('number displayed: \n')
-        if display == '1':
-            value = self.stored[2][0]
+        if display == 1:
+            value = int(stored[2][0])
             button = 'number'
-        elif display == '2':
-            value = self.stored[1][0]
+        elif display == 2:
+            value = int(stored[1][0])
             button = 'number'
-        elif display == '3':
+        elif display == 3:
             value = 3
             button = 'position'
-        elif display == '4':
+        elif display == 4:
             value = 4
             button = 'number'
-        self.press(value, button)
+        answer = self.press(value, button)
+        return answer
 
-    def round4(self):
+    def round4(self, display, stored):
         print('ROUND 4')
-        display = input('number displayed: \n')
         button = 'position'
-        if display == '1':
-            value = self.stored[1][1]
-        elif display == '2':
+        if display == 1:
+            value = int(stored[1][1])
+        elif display == 2:
             value = 1
-        elif display == '3' or display == '4':
-            value = self.stored[2][1]
-        self.press(value, button)
+        elif display == 3 or display == 4:
+            value = int(stored[2][1])
+        answer = self.press(value, button)
+        return answer
 
-    def round5(self):
+    def round5(self, display, stored):
         print('ROUND 5')
         button = 'number'
-        display = input('number displayed: \n')
-        if display == '1' or display == '2':
-            value = self.stored[int(display)][0]
-        elif display == '3':
-            value = self.stored[4][0]
-        elif display == '4': 
-            value = self.stored[3][0]
-        self.press(value, button)
+        if display == 1 or display == 2:
+            value = stored[display][0]
+        elif display == 3:
+            value = int(stored[4][0])
+        elif display == 4: 
+            value = int(stored[3][0])
+        answer = self.press(value, button)
+        return answer
 
-    def module(self):
-        self.round1()
-        print(self.stored)
-        self.round2()
-        print(self.stored)
-        self.round3()
-        print(self.stored)
-        self.round4()
-        print(self.stored)
-        self.round5()
+    def run(self, stage, display, previousrounds):
+        roundbreakdown = previousrounds.split(':')
+        stored = [None]
+        for r in roundbreakdown:
+            stagedata = r.split(',')
+            stored.append(stagedata)
+        if stage == '1':
+            answer = self.round1(display)
+        elif stage == '2':
+            answer = self.round2(display, stored)
+        elif stage == '3':
+            answer = self.round3(display, stored)
+        elif stage == '4':
+            answer = self.round4(display, stored)
+        elif stage == '5':
+            answer = self.round5(display, stored)
+        return answer
 
 if __name__ == "__main__":
     test = Memory()
